@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AngularJS 表达式</title>
+    <script type="text/javascript" src="./angular.js"></script>
+  </head>
+  <body>
+    <div ng-app="">
+        <!-- AngularJS 数字 -->
+      <p>总价： {{ 5 + 5 }}</p>
+      <div ng-init="quantity=2;cost=5">
+          <p>{{quantity * cost}}</p>
+      </div>
+      <!-- AngularJS 字符串 -->
+      <div ng-init="firstName='John';lastName='Doe'">
+          <p>姓名: {{firstName + " " + lastName}}</p>
+      </div>
+      <!-- AngularJS 对象 -->
+      <div ng-init="person={firstName:'Johm',lastName:'Doe'}">
+        <p>姓名: {{person.firstName + " " + person.lastName}}</p>
+      </div>
+      <!-- AngularJS 数组 -->
+      <div ng-init="points=[1,15,19,2,40]">
+        <p>第一个值为 {{ points[0] }}</p>
+        <p>第二个值为 {{ points[1] }}</p>
+        <p>第三个值为 {{ points[2] }}</p>
+      </div>
+    </div>
+    <script src="./angular.js"></script>
+  </body>
+</html>

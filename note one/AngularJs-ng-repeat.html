@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div ng-app="app" ng-controller="repeatController">
+      <ul>
+        <li ng-repeat="item in arr">
+          {{ item.name + ", " + item.country }}
+        </li>
+      </ul>
+    </div>
+    <script src="./angular.js"></script>
+    <script>
+      var app = angular.module('app', []);
+      function init(scope) {
+        scope.arr = [
+          { name: "Jani", country: "Norway" },
+          { name: "Hege", country: "Sweden" },
+          { name: "Kai", country: "Denmark" }
+        ];
+      }
+      app.controller("repeatController", init)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="./angular.js"></script>
+    <div ng-app="app">
+      <div ng-controller="personController">
+        名: <input type="text" ng-model="person.firstName" /><br />
+        姓: <input type="text" ng-model="person.lastName" /><br />
+        <p>姓名: {{ person.firstName + " " + person.lastName }}</p>
+        <span>姓名: {{ name }}</span>
+      </div>
+    </div>
+    <script>
+      var app = angular.module("app", []);
+      app.controller("personController", [
+        "scope",
+        function(scope) {
+          scope.person = {
+            firstName: "John",
+            lastName: "Doe"
+          };
+          // 因为只会进行执行一次,不会一直监听,所以这里只触发一次,所以之后改变 firstName 和 lastName 时,name的值并不会改变
+          scope.name = scope.person.firstName + " " + scope.person.lastName;
+        }
+      ]);
+      // var app = angular.module("app",[]);
+      // var init = function(scope){
+      //     scope.person = {
+      //         firstName: "John",
+      //         lastName: "Doe"
+      //     };
+      //     // 因为只会进行执行一次,不会一直监听,所以这里只触发一次,所以之后改变 firstName 和 lastName 时,name的值并不会改变
+      //     scope.name = scope.person.firstName + " " + scope.person.lastName;
+      //     console.log(scope.name)
+      // }
+      // app.controller("personController", init);
+    </script>
+  </body>
+</html>
