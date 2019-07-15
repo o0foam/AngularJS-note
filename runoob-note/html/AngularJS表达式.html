@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>AngularJS简介-3</title>
+    </head>
+    <body>
+        <script src="./js/angular.js"></script>
+        <div ng-app="">
+            <p>我的第一个表示： {{ 5 + 5 }}</p>
+
+            <!-- 数字 -->
+            <div ng-init="quantity=2;cost=5">
+                <p>总价:{{ quantity * cost }}</p>
+                <!-- 使用 ng-bind 的相同实例： -->
+                <p>总价: <span ng-bind="quantity * cost"></span></p>
+            </div>
+
+            <!-- 字符串 -->
+            <div ng-init="firstName='John';lastName='Doe'">
+                <p>姓名： {{ firstName + " " + lastName }}</p>
+                <!-- 使用 ng-bind 的相同实例： -->
+                <p>姓名： <span ng-bind="firstName + ' ' + lastName"></span></p>
+            </div>
+
+            <!-- 字符串 -->
+            <div ng-init="person={firstName:'John',lastName:'Doe'}">
+                <p>姓为 {{ person.lastName }}</p>
+                <!-- 使用 ng-bind 的相同实例： -->
+                <p>姓为 <span ng-bind="person.lastName"></span></p>
+            </div>
+
+            <!-- 数组 -->
+            <div ng-init="points=[1,15,19,2,40]">
+                <p>第三个值为 {{ points[2] }}</p>
+                <!-- 使用 ng-bind 的相同实例： -->
+                <p>第三个值为 <span ng-bind="points[2]"></span></p>
+            </div>
+        </div>
+    </body>
+</html>

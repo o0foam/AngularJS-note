@@ -1,4 +1,5 @@
 学习资料源自: [AngularJS 慕课手记](https://www.imooc.com/article/260273)
+
 # 介绍
 
 AngularJS 最初由 Misko Hevery 和 Adam Abrons 于 2009 年开发,后来成为了 Google 公司的项目。AngularJS 弥补了 HTML 在构建应用方面的不足,其通过使用标识符(directives)勾结,来扩展 Web 应用中的 HTML 词汇,使开发者可以使用 HTML 来声明动态内容,从而使得 Web 开发和测试变得更加容易。
