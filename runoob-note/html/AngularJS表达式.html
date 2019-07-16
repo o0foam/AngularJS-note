@@ -4,11 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>AngularJS简介-3</title>
+        <title>AngularJS 表达式</title>
     </head>
     <body>
         <script src="./js/angular.js"></script>
-        <div ng-app="">
+        <div ng-app="myApp">
             <p>我的第一个表示： {{ 5 + 5 }}</p>
 
             <!-- 数字 -->
@@ -38,6 +38,39 @@
                 <!-- 使用 ng-bind 的相同实例： -->
                 <p>第三个值为 <span ng-bind="points[2]"></span></p>
             </div>
+
+            <!-- 自定义组件 -->
+            <div>
+                元素名方法:
+                <runoob-directive></runoob-directive>
+            </div>
+            <div>
+                属性方法:
+                <div runoob-directive></div>
+            </div>
+            <div>
+                类名方法:
+                <p>注意： 你必须设置 restrict 的值为 "C" 才能通过类名来调用指令。</p>
+                <div class="runoob-directive"></div>
+            </div>
+            <div>
+                注释方法:
+                <p><b>注意： 你必须设置 restrict 的值为 "M" 才能通过注释来调用指令。</b></p>
+                <p><b>注意： 我们需要在该实例添加 replace 属性， 否则评论是不可见的。</b></p>
+                <!-- directive: runoob-directive -->
+            </div>
         </div>
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.directive("runoobDirective", function() {
+                return {
+                    // restrict : "C", // 类名方法专用
+                    // restrict : "M", // 注释方法专用
+                    // replace : true, // 注释方法专用
+                    template: "<h1>自定义指令!</h1>"
+                };
+            });
+        </script>
     </body>
 </html>

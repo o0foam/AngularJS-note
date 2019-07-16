@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>AngularJS指令</title>
+    </head>
+    <body>
+        <script src="./js/angular.js"></script>
+        <div ng-app="">
+            <!-- ng-model 实例: -->
+            <div ng-init="firstName='John'">
+                <p>在输入框中尝试输入：</p>
+                <p>姓名：<input type="text" ng-model="firstName" /></p>
+                <p>你输入的为： {{ firstName }}</p>
+            </div>
+            <div ng-init="quantity=1;price=5">
+                <h2>价格计算器</h2>
+                数量： <input type="number" ng-model="quantity" /> 价格：
+                <input type="number" ng-model="price" />
+                <p><b>总价：</b> {{ quantity * price }}</p>
+            </div>
+            <!-- ng-repeat 实例: -->
+            <div ng-init="names=['Janni', 'Hege', 'Kai']">
+                <p>使用 ng-repeat来循环数组</p>
+                <ul>
+                    <li ng-repeat="item in names">
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
+            <div
+                ng-init="person=[
+                {name:'Jani',country:'Norway'},
+                {name:'Hege',country:'Sweden'},
+                {name:'Kai',country:'Denmark'}]"
+            >
+                <p>循环对象</p>
+                <ul>
+                    <li ng-repeat="item in person">
+                        {{ item.name + " come from " + item.country }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

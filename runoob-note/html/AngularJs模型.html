@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>AngularJS 模型</title>
+        <style>
+            input.ng-invalid {
+                background-color: lightblue;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="./js/angular.js"></script>
+        <div ng-app="myApp" ng-controller="myController">
+            <p>1. ng-model 指令:</p>
+            名字:<input ng-model="name">
+
+            <p>2. 双向绑定:</p>
+            <input type="text" ng-model="info">
+            <h1>你输入了{{info}}</h1>
+
+            <p>3. 验证用户输入:
+                <form name="myForm1">
+                    Email:
+                    <input type="email" name="myEmail1" ng-model="text1">
+                    <span ng-show="myForm1.myEmail1.$error.email">不是一个合法地址</span>
+                </form>
+            </p>
+
+            <p>4. 应用状态</p>
+            <form name="myForm2" ng-init="text2 = 'test@runoob.com'">
+                Email:
+                <input type="email" name="myEmail2" ng-model="text2" required></p>
+                <h1>状态</h1>
+                {{myForm2.myEmail2.$valid}}
+                {{myForm2.myEmail2.$dirty}}
+                {{myForm2.myEmail2.$touched}}
+            </form>
+
+            <p>5. CSS 类</p>
+            <form name="myForm3">
+                输入你的名字:
+                <input name="myName" ng-model="text3" required>
+                <p>文本域添加了 required 属性，该值是必须的，如果为空则是不合法的。</p>
+            </form>
+        </div>
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller("myController", [
+                "scope",
+                function($scope) {
+                    $scope.name = "少年";
+                    $scope.info = "信息"
+                }
+            ])
+        </script>
+    </body>
+</html>
