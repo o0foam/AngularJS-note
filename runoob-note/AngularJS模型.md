@@ -72,4 +72,4 @@ ng-model 指令根据表单域的状态添加/移除以下类:
 - ng-dirty
 - ng-pending
 - ng-pristine
-> 文件 以上实例请看文件 AngularJs.html
+> 文件 以上实例请看文件 AngularJs模型.html

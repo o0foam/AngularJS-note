@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>AngularJs Select</title>
+    </head>
+    <body>
+        <script src="./js/angular.js"></script>
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <h1>ng-option</h1>
+            <select
+                ng-model="selecteName"
+                ng-options="item.value as item.name for item in options"
+            >
+            </select>
+            <h1>ng-repeat</h1>
+            <select ng-model="selecteName">
+                <option value="{{ item.value }}" ng-repeat="item in options">{{
+                    item.name
+                }}</option>
+            </select>
+            <h1>两者区别:</h1>
+            <h3>ng-repeat 指令是通过数组来循环 HTML 代码来创建下拉列表，但 ng-options 指令更适合创建下拉列表，它有以下优势：使用 ng-options 的选项是一个对象， ng-repeat 是一个字符串。</h3>
+            <h3>使用 ng-options 指令，选择的值是一个对象：</h3>
+            <select ng-model="res1" ng-options="item.name for item in animals">
+            </select>
+            <p>res1.name:{{ res1.name }}</p>
+            <p>res1.hobby:{{ res1.hobby }}</p>
+            <p>res1:{{ res1 }}</p>
+            <h3>ng-repeat 有局限性，选择的值是一个字符串:</h3>
+            <select ng-model="res2">
+                <option value="{{ item.hobby }}" ng-repeat="item in animals">{{
+                    item.name
+                }}</option>
+            </select>
+            <p>res2.name:{{ res2.name }}</p>
+            <p>res2.hobby:{{ res2.hobby }}</p>
+            <p>res2:{{ res2 }}</p>
+        </div>
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller("myCtrl", [
+                "scope",
+                function($scope) {
+                    $scope.options = [
+                        { name: "第一项", value: "1" },
+                        { name: "第二项", value: "2" },
+                        { name: "第三项", value: "3" }
+                    ];
+                    $scope.selecteName = "2";
+                    $scope.res1 = "";
+                    $scope.res2 = "";
+                    $scope.animals = [
+                        { name: "duck", hobby: "swim" },
+                        { name: "bird", hobby: "fly" },
+                        { name: "chicken", hobby: "crow" }
+                    ];
+                }
+            ]);
+        </script>
+    </body>
+</html>

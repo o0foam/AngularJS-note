@@ -8,11 +8,50 @@
 </head>
 <body>
     <script src="./js/angular.js"></script>
-    <div ng-app="" ng-init="small='the last name!';big='THE LAST NAME'">
+    <div ng-app="myApp" ng-init="small='the last name!';big='THE LAST NAME'">
         <!--uppercase 过滤器将字符串格式化为大写 -->
         <p>过滤器将字符串格式化为大写 {{ small | uppercase }}</p>
         <!-- lowercase 过滤器将字符串格式化为小写 -->
-        <p></p>
+        <p>过滤器将字符串格式化为小写 {{ big | lowercase}}</p>
+        <!-- currrncy 过滤器将数字格式化为货币格式 -->
+        <h1>currrncy 过滤器将数字格式化为货币格式</h1>
+        <input type="number" ng-model="quantity">
+        <input type="number" ng-model="price">
+        <p>总价 = {{ (quantity * price) | currency }}</p>
+        <h1>根据表达式排列数组</h1>
+        <div ng-init="names = [{name: 'xgz', country: 'China'},{name: 'foam', country: 'American'}]">
+            <p>根据 country 排列数组</p>
+            <ul>
+                <li ng-repeat="x in names | orderBy:'country'">
+                    {{ x.name + ', ' + x.country }}
+                </li>
+            </ul>
+        </div>
+        <h1>过滤输入</h1>
+        <div ng-init="arr=[{name:'xgz', country:'china'},{name:'foam', country:'American'},{name:'Jhon', country:'Australia'}]">
+            <input type="text" ng-model="test">
+            <li ng-repeat="item in arr | filter:test | orderBy:'country'">
+                {{ (item.name | uppercase) + ',' + item.country }}
+            </li>
+        </div>
+        <h1>自定义过滤器</h1>
+        <div ng-controller="filterString">
+            <div>{{wind | reverse}}</div>
+        </div>
     </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller("filterString", [
+            "scope",
+            function($scope) {
+                $scope.wind = "七级大狂风"
+            }
+        ])
+        app.filter('reverse', function(){
+            return function(text) {
+                return text.split("").reverse().join("");
+            }
+        })
+    </script>
 </body>
 </html>
